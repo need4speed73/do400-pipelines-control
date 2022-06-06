@@ -20,6 +20,14 @@ stage('Run Tests') {
  steps {
  sh 'node ./frontend/test.js'
  }
+ stage('Deploy'){
+   when{
+      expression { env.GIT_BRANCH == 'origin/master' }
+   }
+   steps{
+      echo "Deploying..." 
+   }
+  }
  }
  }
  }
